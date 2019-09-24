@@ -67,9 +67,11 @@ class MyDetail(models.Model):
 
 
 class Education(models.Model):
-    institute_name = models.CharField(max_length=50)
+    institute_name = models.CharField(max_length=5)
     passing_year = models.CharField(max_length=11)
     education_details = models.TextField()
+
+
 
     def __str__(self):
         return self.institute_name
@@ -98,3 +100,45 @@ class Experience(models.Model):
 
     def __str__(self):
         return self.jod_details
+
+
+class Contact(models.Model):
+    name = models.CharField(max_length=50)
+    sub = models.CharField(max_length=50)
+    email = models.EmailField()
+    message = models.TextField()
+
+
+    def __str__(self):
+        return self.name
+
+    def __str__(self):
+        return self.sub
+
+    def __str__(self):
+        return self.email
+
+    def __str__(self):
+        return self.message
+
+
+class Mywork(models.Model):
+    project_title = models.CharField(max_length=100)
+    project_detail = models.TextField()
+    project_image = models.FileField()
+    project_site_link = models.CharField(max_length=100)
+    project_github_link = models.CharField(max_length=100)
+
+
+class TechnicalSkill(models.Model):
+    topic_name = models.CharField(max_length=50)
+    topic_completed = models.IntegerField()
+
+
+class WorkSumarry(models.Model):
+    project_working = models.IntegerField()
+    project_done = models.IntegerField()
+    award_receved = models.IntegerField()
+    happy_client = models.IntegerField()
+
+

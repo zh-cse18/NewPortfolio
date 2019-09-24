@@ -165,7 +165,7 @@
             <div class="profile-wrapper wow fadeInRight" data-wow-delay="0.3s">
               <h3>Hi Guys!</h3>
 
-              <p>I am Zahid Hassan .I ama Django Developer. I always try my best to build any project.So you can trust me.</p>
+              <p>I am Zahid Hassan .I am a Django Developer. I always try my best to build any project.So you can trust me.</p>
               <div class="about-profile">
                 <ul class="admin-profile">
                   <li><span class="pro-title"> Name </span> <span class="pro-detail">{{details.my_name }}</span></li>
@@ -212,7 +212,7 @@
                 <i class="icon-layers"></i>
               </div>
               <div class="services-content">
-                <h3><a href="#">Graphic Design</a></h3>
+                <h3><a href="#">Backend Development</a></h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse condi.</p>
               </div>
             </div>
@@ -224,7 +224,7 @@
                 <i class="icon-briefcase"></i>
               </div>
               <div class="services-content">
-                <h3><a href="#">Business Branding</a></h3>
+                <h3><a href="#">Database Related</a></h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse condi.</p>
               </div>
             </div>
@@ -236,7 +236,7 @@
                 <i class="icon-bubbles"></i>
               </div>
               <div class="services-content">
-                <h3><a href="#">Consultancy</a></h3>
+                <h3><a href="#">Android Development</a></h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse condi.</p>
               </div>
             </div>
@@ -245,6 +245,10 @@
       </div>
     </section>
     <!-- Services Section End -->
+
+
+
+    <!-- Portfolio Section Ends -->
 
     <!-- Resume Section Start -->
     <div id="resume" class="section-padding">
@@ -261,7 +265,7 @@
                 <li>
 
                   <div class="content-text">
-                    <h3 class="line-title">Bsc In CSE - {{ edu.institute_name }}</h3>
+                    <h3 class="line-title"> {{ edu.institute_name }}</h3>
                     <span>{{ edu.passing_year }}</span>
                     <p class="line-text">{{ edu.education_details }}</p>
                   </div>
@@ -278,23 +282,46 @@
                   <i class="icon-briefcase"></i>
                   <h2 class="timelin-title">Experience</h2>
                 </li>
-                  {% for work_exp in  experience %}
+                  {% for work_exp in experience %}
                 <li>
                   <div class="content-text">
-                    <h3 class="line-title">Company Name : {{ work_exp.company_name }}</h3>
-                    <span>Experience :{{ work_exp.job_duration }}</span>
-                      <p class="line-text"> <h6>Job Details : {{ work_exp.position }}</h6></p>
-                      <p class="line-text"> <h6>Job Details : {{ work_exp.jod_details }}</h6></p>
+                     <h3 class="line-title">Company Name : {{ work_exp.company_name }}</h3>
+                      <p class="line-text"> <h6><strong>Duration :</strong> {{ work_exp.job_duration }}</h6></p>
+                      <p class="line-text"> <h6><strong>Job Title :</strong>  {{ work_exp.position }}</h6></p>
+                      <p class="line-text"> <h6><strong>Job Details : </strong> {{ work_exp.jod_details }}</h6></p>
                   </div>
                 </li>
                   {% endfor %}
               </ul>
+
             </div>
           </div>
         </div>
       </div>
     </div>
     <!-- Resume Section End -->
+
+
+ <!-- Technical Skill  Starts -->
+    <section>
+      <div class="container">
+        <h2 class="">My Technical Skill</h2>
+           <br>
+          {% for skill in technical_skill %}
+          <!-- Portfolio Recent Projects -->
+              <div class=" col-md-12 bg-light">
+                  <h4>{{ skill.topic_name }}</h4>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:{{ skill.topic_completed }}%">{{ skill.topic_completed}}%</div>
+                  </div>
+              </div>
+              <br>
+          {% endfor %}
+          <br>
+     </div>
+    </section>
+
+{#      <!-- Technical Skill End Container Ends -->#}
 
     <!-- Portfolio Section -->
     <section id="portfolios" class="section-padding">
@@ -323,114 +350,33 @@
 
           <!-- Portfolio Recent Projects -->
           <div id="portfolio" class="row wow fadeInDown" data-wow-delay="0.4s">
+              {% for work in mywork %}
             <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix development print">
               <div class="portfolio-item">
                 <div class="shot-item">
-                  <img src="{% static 'img/gallery/img-1.jpg' %}" alt="" />
+                  <img src="{{ work.project_image.url }}" alt="" />
                   <div class="overlay">
                     <div class="icons">
-                      <a class="lightbox preview" href="{% static 'img/gallery/img-1.jpg' %}">
+                      <a class="lightbox preview" href="{{ work.project_image.url }}">
                         <i class="icon-eye"></i>
                       </a>
-                      <a class="link" href="#">
+                      <a class="link" href="{{ work.project_github_link }}">
                         <i class="icon-link"></i>
                       </a>
                     </div>
                   </div>
-                </div>               
+                </div>
               </div>
             </div>
-            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix design print">
-              <div class="portfolio-item">
-                <div class="shot-item">
-                  <img src="{% static 'img/gallery/img-1.jpg' %}" alt=""/>
-                  <div class="overlay">
-                    <div class="icons">
-                      <a class="lightbox preview" href="{% static 'img/gallery/img-1.jpg' %}">
-                        <i class="icon-eye"></i>
-                      </a>
-                      <a class="link" href="#">
-                        <i class="icon-link"></i>
-                      </a>
-                    </div>
-                  </div>
-                </div>               
-              </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix development">
-              <div class="portfolio-item">
-                <div class="shot-item">
-                  <img src="{% static 'img/gallery/img-1.jpg' %}" alt=""/>
-                  <div class="overlay">
-                    <div class="icons">
-                      <a class="lightbox preview" href="{% static 'img/gallery/img-1.jpg' %}">
-                        <i class="icon-eye"></i>
-                      </a>
-                      <a class="link" href="#">
-                        <i class="icon-link"></i>
-                      </a>
-                    </div>
-                  </div>
-                </div>               
-              </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix development design">
-              <div class="portfolio-item">
-                <div class="shot-item">
-                  <img src="{% static 'img/gallery/img-1.jpg' %}" alt="" />
-                  <div class="overlay">
-                    <div class="icons">
-                      <a class="lightbox preview" href="{% static 'img/gallery/img-1.jpg' %}">
-                        <i class="icon-eye"></i>
-                      </a>
-                      <a class="link" href="#">
-                        <i class="icon-link"></i>
-                      </a>
-                    </div>
-                  </div>
-                </div>               
-              </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix development">
-              <div class="portfolio-item">
-                <div class="shot-item">
-                  <img src="{% static 'img/gallery/img-1.jpg' %}" alt="" />
-                  <div class="overlay">
-                    <div class="icons">
-                      <a class="lightbox preview" href="{% static 'img/gallery/img-1.jpg' %}">
-                        <i class="icon-eye"></i>
-                      </a>
-                      <a class="link" href="#">
-                        <i class="icon-link"></i>
-                      </a>
-                    </div>
-                  </div>
-                </div>               
-              </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix print design">
-              <div class="portfolio-item">
-                <div class="shot-item">
-                  <img src="{% static 'img/gallery/img-1.jpg' %}" alt=""/>
-                  <div class="overlay">
-                    <div class="icons">
-                      <a class="lightbox preview" href="{% static 'img/gallery/img-1.jpg' %}">
-                        <i class="icon-eye"></i>
-                      </a>
-                      <a class="link" href="#">
-                        <i class="icon-link"></i>
-                      </a>
-                    </div>
-                  </div>
-                </div>               
-              </div>
-            </div>
+            {% endfor %}
           </div>
         </div>
-      </div>
-      <!-- Container Ends -->
-    </section>
+     </div>
+{#      <!-- Container Ends -->#}
+   </section>
     <!-- Portfolio Section Ends --> 
+
+
 
     <!-- Counter Area Start-->
     <section class="counter-section section-padding">
@@ -440,7 +386,7 @@
           <div class="col-md-3 col-sm-6 work-counter-widget text-center">
             <div class="counter wow fadeInDown" data-wow-delay="0.3s">
               <div class="icon"><i class="icon-briefcase"></i></div>
-              <div class="counterUp">250</div>
+              <div class="counterUp">{{ work.project_working }}</div>
               <p>Project Working</p>
             </div>
           </div>
@@ -448,7 +394,7 @@
           <div class="col-md-3 col-sm-6 work-counter-widget text-center">
             <div class="counter wow fadeInDown" data-wow-delay="0.6s">
               <div class="icon"><i class="icon-check"></i></div>
-              <div class="counterUp">950</div>
+              <div class="counterUp">{{ work.project_done }}</div>
               <p>Project Done</p>
             </div>
           </div>
@@ -456,7 +402,7 @@
           <div class="col-md-3 col-sm-6 work-counter-widget text-center">
             <div class="counter wow fadeInDown" data-wow-delay="0.9s">
               <div class="icon"><i class="icon-diamond"></i></div>
-              <div class="counterUp">150</div>
+              <div class="counterUp">{{ work.award_receved }}</div>
               <p>Awards Received</p>
             </div>
           </div>
@@ -464,7 +410,7 @@
           <div class="col-md-3 col-sm-6 work-counter-widget text-center">
             <div class="counter wow fadeInDown" data-wow-delay="1.2s">
               <div class="icon"><i class="icon-heart"></i></div>
-              <div class="counterUp">299</div>
+              <div class="counterUp">{{ work.happy_client }}</div>
               <p>Happy Clients</p>
             </div>
           </div>
@@ -472,6 +418,9 @@
       </div>
     </section>
     <!-- Counter Area End-->
+
+
+
 
     <!-- Contact Section Start -->
     <section id="contact" class="section-padding">      
@@ -481,40 +430,41 @@
             <div class="col-md-6 col-lg-6 col-sm-12">
               <div class="contact-block">
                 <h2>Contact Form</h2>
-                <form id="contactForm">
+                <form action="" method="post">
+                    {% csrf_token %}
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group">
                         <input type="text" class="form-control" id="name" name="name" placeholder="Name"
                                required data-error="Please enter your name">
                         <div class="help-block with-errors"></div>
-                      </div>                                 
+                      </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <input type="text" placeholder="Email" id="email" class="form-control" name="email" required data-error="Please enter your email">
                         <div class="help-block with-errors"></div>
-                      </div> 
+                      </div>
                     </div>
                      <div class="col-md-12">
                       <div class="form-group">
-                        <input type="text" placeholder="Subject" id="msg_subject" class="form-control" name ='sub' required data-error="Please enter your subject">
+                        <input type="text" placeholder="Subject" id="msg_subject" class="form-control" name ="subject" required data-error="Please enter your subject">
                         <div class="help-block with-errors"></div>
                       </div>
                     </div>
                     <div class="col-md-12">
-                      <div class="form-group"> 
-                        <textarea class="form-control" id="message" placeholder="Your Message" name = 'message' rows="5" data-error="Write your message" required></textarea>
+                      <div class="form-group">
+                        <textarea class="form-control" id="message" placeholder="Your Message" name = "message" rows="5" data-error="Write your message" required></textarea>
                         <div class="help-block with-errors"></div>
                       </div>
                       <div class="submit-button">
-                        <button class="btn btn-common" id="submit" type="submit">Send Message</button>
-                        <div id="msgSubmit" class="h3 text-center hidden"></div> 
-                        <div class="clearfix"></div> 
+                        <button class="btn btn-common" type="submit">Send Message</button>
+                        <div id="msgSubmit" class="h3 text-center hidden"></div>
+                        <div class="clearfix"></div>
                       </div>
                     </div>
-                  </div>            
-                </form>
+                  </div>
+               </form>
               </div>
             </div>
             <div class="col-md-6 col-lg-6 col-sm-12">
@@ -531,7 +481,6 @@
                     <div class="contact-icon">
                       <i class="fa fa-envelope"></i>
                     </div>
-                    <p><a href="mailto:hello@tom.com">hello@zahid.com</a></p>
                     <p><a href="mailto:tomsaulnier@gmail.com">{{ details.email }}</a></p>
                   </div>
                   <div class="single-contact">
@@ -539,19 +488,18 @@
                       <i class="fa fa-phone"></i>
                     </div>
                     <p><a href="#">{{ details.phone }}</a></p>
-                    <p><a href="#">{{ details.phone }}</a></p>
                   </div>
                 </div>
               </div>
             </div>
-{#            <div class="col-md-12">#}
-{#            <object style="border:0; height: 450px; width: 100%;" data="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d34015.943594576835!2d-106.43242624069771!3d31.677719472407432!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86e75d90e99d597b%3A0x6cd3eb9a9fcd23f1!2sCourtyard+by+Marriott+Ciudad+Juarez!5e0!3m2!1sen!2sbd!4v1533791187584"></object>#}
-{#            </div>#}
+
           </div>
         </div>
-      </div>   
+      </div>
     </section>
-    <!-- Contact Section End -->
+
+
+
 
     <!-- Footer Section Start -->
     <footer class="footer-area section-padding">
@@ -572,7 +520,9 @@
                   <li>
                     <a class="linkedin" href="{{ post.linked_link}}"><i class="icon-social-linkedin"></i></a>
                   </li>
+
               </ul>
+
               <p>Copyright  Zahid© 2019 All Right Reserved</p>
             </div>
           </div>
@@ -582,8 +532,8 @@
     <!-- Footer Section End -->
 
 {#    <!-- Go to Top Link -->#}
-{#    <a href="#" class="back-to-top">#}
-{#      <i class="icon-arrow-up"></i>jtjgfkjg;vl;</a>#}
+    <a href="#" class="back-to-top">
+      <i class="icon-arrow-up"></i></a>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src=" {% static 'js/jquery-min.js' %}"></script>
