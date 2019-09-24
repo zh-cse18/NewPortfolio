@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 
-class  HeroArea(models.Model):
+class HeroArea(models.Model):
     name = models.CharField(max_length=30)
     title = models.CharField(max_length=30)
     image = models.FileField()
@@ -71,8 +71,6 @@ class Education(models.Model):
     passing_year = models.CharField(max_length=11)
     education_details = models.TextField()
 
-
-
     def __str__(self):
         return self.institute_name
 
@@ -108,7 +106,6 @@ class Contact(models.Model):
     email = models.EmailField()
     message = models.TextField()
 
-
     def __str__(self):
         return self.name
 
@@ -123,16 +120,41 @@ class Contact(models.Model):
 
 
 class Mywork(models.Model):
+
+    category = (
+        ("WEB", "web"),
+        ("ANDROID", "android"),
+        (".NET", ".net"),
+    )
     project_title = models.CharField(max_length=100)
+    project_category = models.CharField(choices=category, default="WEB", max_length=20)
     project_detail = models.TextField()
     project_image = models.FileField()
     project_site_link = models.CharField(max_length=100)
     project_github_link = models.CharField(max_length=100)
 
+    def __str__(self):
+        return self.project_detail
+
+    def __str__(self):
+        return self.project_image
+
+    def __str__(self):
+        return self.project_github_link
+
+    def __str__(self):
+        return self.project_site_link
+
+    def __str__(self):
+        return self.project_title
+
 
 class TechnicalSkill(models.Model):
     topic_name = models.CharField(max_length=50)
     topic_completed = models.IntegerField()
+
+    def __str__(self):
+        return self.topic_name
 
 
 class WorkSumarry(models.Model):
@@ -141,4 +163,20 @@ class WorkSumarry(models.Model):
     award_receved = models.IntegerField()
     happy_client = models.IntegerField()
 
+    def __str__(self):
+        return self.project_working
 
+    def __str__(self):
+        return self.project_done
+
+    def __str__(self):
+        return self.award_receved
+
+    def __str__(self):
+        return self.happy_client
+
+
+class MyActivity(models.Model):
+    icon_name = models.CharField(max_length=50)
+    sector_name = models.CharField(max_length=50)
+    details = models.TextField()

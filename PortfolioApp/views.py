@@ -1,8 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
-
-from PortfolioApp.forms import ContactForm
-from PortfolioApp.models import HeroArea, MyDetail, Education, Experience, Contact, Mywork, TechnicalSkill, WorkSumarry
+from PortfolioApp.models import HeroArea, MyDetail, Education, Experience, Contact, Mywork, TechnicalSkill, WorkSumarry, \
+    MyActivity
 
 
 def index(request):
@@ -36,7 +35,8 @@ def index(request):
           'experience': Experience.objects.all(),
           'mywork': Mywork.objects.all(),
           'technical_skill': TechnicalSkill.objects.all(),
-          'work': get_object_or_404(WorkSumarry)
+          'work': get_object_or_404(WorkSumarry),
+          'my_activity': MyActivity.objects.all(),
 
 
      }
