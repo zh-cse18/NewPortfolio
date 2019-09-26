@@ -26,7 +26,7 @@ SECRET_KEY = '(26t1l&n5rh-)=zahidhassanr+g^*7tp_e8p6%y%f$l5p1zf%@gt**3b9-jh'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['https://zahid-hassan-portfolio.herokuapp.com']
 
 
 # Application definition
